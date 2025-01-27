@@ -1,0 +1,294 @@
+
+
+body {
+  --purple: #007bff;
+  --white: #fafafa;
+  --background: var(--purple);
+  --accent: var(--white);
+  color: var(--accent);
+}
+
+.bg-gradient-radial {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.991),
+    rgba(1, 1, 2, 0)
+  );
+}
+
+.go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  background-color: #0845df;
+  border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+  margin-top: -4px;
+  margin-right: -4px;
+  color: white;
+  font-family: courier, sans;
+}
+
+.card1 {
+  position: relative;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  min-width: 330px;
+  margin: 8px;
+  padding-top: 6px;
+  z-index: 0;
+  overflow: hidden;
+
+   &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -20px;
+    right: -20px;
+    background: #e9e9e9;
+    height: 32px;
+    width: 52px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.8s ease-out;
+  }
+
+  &:hover:before {
+    transform: scale(21);
+  } 
+}
+
+.card1:hover {
+  p {
+    transition: all 0.3s ease-out;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  h3 {
+    transition: all 0.3s ease-out;
+    color: #ffffff;
+  }
+}
+
+/* styles.css */
+.parallax {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroller {
+  display: inline-flex;
+  gap: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.parallax-text {
+  font-family: "Plaster", sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  font-size: 56px;
+  letter-spacing: -1px;
+  text-align: center;
+}
+/* 
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0) 1px,
+    var(--background) 1px
+  );
+  background-size: 4px 4px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  -moz-backdrop-filter: blur(3px);
+  font-size: 14px;
+  line-height: 14px;
+}
+
+footer::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.2;
+}
+
+footer svg {
+  margin-right: 20px;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+code {
+  font-family: input-mono, monospace;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--background);
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+.progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--accent);
+  bottom: 100px;
+}
+
+code {
+    font-family: input-mono, monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  
+
+  .textured-background {
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Fondo texturizado con luces verdes */
+  .textured-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(7, 54, 226, 0.998) 1%, transparent 10%) 0 0,
+                radial-gradient(circle, rgba(0, 0, 0, 0.877) 1%, transparent 10%) 10vw 10vh;
+    background-size: 5vw 5vh;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Fondo con puntos cuadrados azul y blanco */
+  .textured-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      repeating-linear-gradient(45deg, rgba(3, 3, 3, 0.3), rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 4px),
+      repeating-linear-gradient(135deg, rgba(16, 15, 15, 0.955), rgba(0, 0, 0, 0.2) 2px, transparent 2px, transparent 4px),
+      radial-gradient(circle at 30% 30%, rgba(13, 13, 13, 0.1), transparent 30%),
+      radial-gradient(circle at 70% 70%, rgba(150, 150, 200, 0.1), transparent 25%);
+    background-size: 5px 5px, 5px 5px, cover, cover;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(0.5px);
+  }
+  
+  
+ /* From Uiverse.io by vinodjangid07 */ 
+.button {
+  width: 98%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0px 15px;
+  background-color: rgb(66, 66, 66);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .2s;
+}
+
+.bell {
+  width: 13px;
+}
+
+.bell path {
+  fill: rgb(0, 206, 62);
+}
+
+.arrow {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: rgb(77, 77, 77);
+  transition-duration: .2s;
+}
+
+.button:hover .arrow {
+  animation: slide-right .6s ease-out both;
+}
+/* arrow animation */
+@keyframes slide-right {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.button:active {
+  transform: translate(1px , 1px);
+  transition-duration: .2s;
+}

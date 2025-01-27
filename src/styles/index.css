@@ -1,0 +1,55 @@
+/* src/index.css */
+/*
+src
+└── styles
+    ├── base.css          # Reset y estilos base
+    ├── animations.css    # Animaciones personalizadas
+    ├── variables.css     # Variables y temas
+    ├── components.css    # Estilos específicos para componentes globales
+    └── utilities.css     # Utilidades personalizadas, como helpers para margenes o bordes
+*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Estilos para clases de uso común */
+.btn-primary {
+  @apply bg-primary text-white font-semibold py-2 px-4 rounded-lg transition;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+
+
+#map-container {
+  height: 100%;
+
+  
+}
