@@ -1,7 +1,7 @@
 # AccessControlApp
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+![License](https://img.shields.io/badge/license-INNOVA-green)
 ![Node.js](https://img.shields.io/badge/Node.js-%3E%3D%2014.0.0-brightgreen)
 ![React](https://img.shields.io/badge/React-%3E%3D%2017.0.0-blue)
 
@@ -22,12 +22,10 @@ Welcome to the **AccessControlApp**! This is an advanced, user-friendly system d
 This app is built with the following technologies:
 
 - **React**: For building user interfaces.
-- **Material-UI**: For modern and responsive design.
-- **Node.js**: Server-side JavaScript for backend logic.
-- **MongoDB**: Database for storing user, visitor, and building data.
-- **Express.js**: Backend framework for routing and handling HTTP requests.
+- **TypeScript**: For adding static types to JavaScript, improving code quality and maintainability.
+- **TailwindCSS**: A utility-first CSS framework to create responsive and custom designs quickly.
+- **AWS (Amazon Web Services)**: Used for cloud-services, storage (S3), RDS Mysql.
 - **WebRTC**: For real-time video streaming integration.
-- **GitHub Actions**: For continuous integration and deployment (CI/CD).
 
 ## Installation
 
