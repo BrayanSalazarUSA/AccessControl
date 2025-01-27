@@ -35,3 +35,13 @@ To get started with the project locally, follow these steps:
 
 ```bash
 git clone https://github.com/BrayanSalazarUSA/AccessControlApp.git
+
+## Main commands
+
+- **npm install**: Installs the necessary dependencies for the project.
+- **npm start**: Creates an optimized production build of the project.
+- **npm test**: Runs the automated tests for the project.
+- **npm run build** : Creates an optimized production build of the project.
+
+
+
