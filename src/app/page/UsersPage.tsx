@@ -101,13 +101,13 @@ const UsersPage = () => {
           <TableHead>
             <TableRow>
               <TableCell>#</TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Identificación</TableCell>
-              <TableCell>Propiedad</TableCell>
-              <TableCell>Fecha de Creación</TableCell>
-              <TableCell>Apartmento</TableCell>
-              <TableCell>Carro</TableCell>
-              <TableCell>Acciones</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Property</TableCell>
+              <TableCell>Created At</TableCell>
+              <TableCell>Apartment</TableCell>
+              <TableCell>Cars</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

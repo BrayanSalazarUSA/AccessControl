@@ -11,22 +11,18 @@ import {
   DialogContent,
   DialogTitle,
   Button,
-  Grid,
+  Grid2 as Grid,
   ListItemIcon,
   Typography,
 } from "@mui/material";
-import { Apartment, Cancel, CheckCircle, Home } from "@mui/icons-material";
+import {
+  Apartment as ApartmentIcon,
+  Cancel,
+  CheckCircle,
+  Home,
+} from "@mui/icons-material";
 import { motion } from "framer-motion";
-interface Building {
-  id: number;
-  name: string;
-}
-
-interface Apartment {
-  id: number;
-  name: string;
-  buildingId: number;
-}
+import { Apartment, Building } from "../../types/Interfaces";
 
 interface BuildingApartmentTransferListProps {
   buildings: Building[];
@@ -89,7 +85,7 @@ const BuildingApartmentTransferList: React.FC<
         />
         {selectedApartment
           ? `${selectedBuilding?.name}, APT ${selectedApartment?.name}`
-          : "Destino"}
+          : "Destination"}
         <div className="arrow">› </div>
       </button>
 
@@ -132,7 +128,7 @@ const BuildingApartmentTransferList: React.FC<
               fontSize: "1.2rem", // Tamaño ajustado para hacerlo más visible
             }}
           >
-            Selecciona un Edificio y Apartamento
+            Select a Building and Apartment
           </Typography>
         </DialogTitle>
         <DialogContent
@@ -176,21 +172,21 @@ const BuildingApartmentTransferList: React.FC<
                 <ListSubheader
                   sx={{ background: "#e0e0e0", fontWeight: "bold" }}
                 >
-                  Edificios
+                  Buildings
                 </ListSubheader>
               }
             >
               <Grid container>
                 {buildings.map((building) => (
-                  <Grid item xs={4} key={building.id}>
+                  <Grid size={4} key={building.id}>
                     <ListItem
                       key={building.id}
-                      button
+                      component="li" // Agregado para evitar el error
                       onClick={() => handleBuildingSelect(building)}
                       sx={{ height: "50px", padding: "4px 8px" }}
                     >
                       <ListItemIcon sx={{ minWidth: "auto" }}>
-                        <Apartment
+                        <ApartmentIcon
                           sx={{
                             color:
                               selectedBuilding?.id === building.id
@@ -256,15 +252,15 @@ const BuildingApartmentTransferList: React.FC<
                 <ListSubheader
                   sx={{ background: "#e0e0e0", fontWeight: "bold" }}
                 >
-                  Apartamentos
+                  Apartments
                 </ListSubheader>
               }
             >
               <Grid container>
                 {apartmentsForBuilding.map((apartment) => (
-                  <Grid item xs={4} key={apartment.id}>
+                  <Grid size={4} key={apartment.id}>
                     <ListItem
-                      button
+                      component="li" // Agregado para evitar el error
                       onClick={() => handleApartmentSelect(apartment)}
                       sx={{
                         padding: 1,
@@ -345,7 +341,7 @@ const BuildingApartmentTransferList: React.FC<
             }}
             startIcon={<Cancel sx={{ fontSize: 20 }} />}
           >
-            Cancelar
+            Cancel
           </Button>
 
           {/* Botón de Confirmar Selección */}
@@ -371,7 +367,7 @@ const BuildingApartmentTransferList: React.FC<
             disabled={!selectedBuilding || !selectedApartment}
             startIcon={<CheckCircle sx={{ fontSize: 20 }} />}
           >
-            Confirmar Selección
+            Confirm Selection
           </Button>
         </DialogActions>
       </Dialog>

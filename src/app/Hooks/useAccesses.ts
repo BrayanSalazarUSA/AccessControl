@@ -1,22 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { getRecentAccesses } from "../services/accessService";
+import { getRecentAccesses, searchAccessLogsByKeyword } from "../services/accessService";
+import { AccessRecord } from "../types/Interfaces";
 
-interface Visitor {
-  firstName: string;
-  lastName: string;
-  carPlates: string;
-  building: string;
-  apartment: string;
-  photo: string;
-}
-
-interface AccessRecord {
-  id: number;
-  accessTime: string;
-  visitor: Visitor;
-}
-
-const useAccesses = (propertyId: number) => {
+const useAccesses = (propertyId: number, refetch: boolean) => {
   const [accessData, setAccessData] = useState<AccessRecord[]>([]);
   const [filteredData, setFilteredData] = useState<AccessRecord[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -30,35 +16,33 @@ const useAccesses = (propertyId: number) => {
     setLoading(true);
     try {
       const data = await getRecentAccesses(propertyId);
-      setAccessData(data);
-      setFilteredData(data); // Inicializa los datos filtrados
+      const reversedData = [...data].reverse();
+      setAccessData(reversedData);
+      setFilteredData(reversedData);
       setError(null);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError("Failed to load access data.");
     } finally {
       setLoading(false);
     }
-  }, []); // `useCallback` ahora solo depende de nada porque la lógica depende de `propertyId` y lo pasamos como argumento
+  }, [refetch]);
 
-  // Este `useEffect` se dispara cada vez que `propertyId` cambia
+  // Efecto para cargar los accesos cuando cambia el propertyId
   useEffect(() => {
-    fetchAccessData(propertyId); // Ahora se pasa `propertyId` como argumento
-  }, [propertyId, fetchAccessData]); // Dependemos de `propertyId` y de `fetchAccessData`
+    fetchAccessData(propertyId);
+  }, [propertyId, fetchAccessData]);
 
   // Filtrar datos
   useEffect(() => {
     if (searchTerm) {
-      const lowercasedTerm = searchTerm.toLowerCase();
-      const filtered = accessData.filter(
-        (car) =>
-          car.visitor.carPlates.toLowerCase().includes(lowercasedTerm) ||
-          car.visitor.firstName.toLowerCase().includes(lowercasedTerm) ||
-          car.visitor.lastName.toLowerCase().includes(lowercasedTerm) ||
-          car.visitor.building.toLowerCase().includes(lowercasedTerm) ||
-          car.visitor.apartment.toLowerCase().includes(lowercasedTerm)
-      );
-      setFilteredData(filtered);
+      setLoading(true);
+      searchAccessLogsByKeyword(searchTerm)
+        .then((data) => {
+          setFilteredData(data);
+          setError(null);
+        })
+        .catch(() => setError("Failed to search access logs."))
+        .finally(() => setLoading(false));
     } else {
       setFilteredData(accessData);
     }
@@ -74,10 +58,7 @@ const useAccesses = (propertyId: number) => {
   };
 
   // Calcular los datos de la página actual
-  const paginatedData = filteredData.slice(
-    page * rowsPerPage,
-    (page + 1) * rowsPerPage
-  );
+  const paginatedData = filteredData.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
 
   return {
     accessData,
@@ -89,7 +70,7 @@ const useAccesses = (propertyId: number) => {
     paginatedData,
     handleSearch,
     handleChangePage,
-    fetchAccessData, // Para refrescar los datos manualmente
+    fetchAccessData,
   };
 };
 

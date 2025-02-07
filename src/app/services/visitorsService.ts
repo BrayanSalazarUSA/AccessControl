@@ -1,27 +1,10 @@
+const HOST_API = import.meta.env.VITE_HOST_API;
+
 import axios from "axios";
-import { Property } from "./propertiesService";
-
-export interface Car {
-  id?: number;
-  plate: string;
-}
-
-export interface Visitor {
-  id?: number;
-  firstName: string;
-  lastName: string;
-  identification: number;
-  createdAt: string;
-  photo: string;
-  property: Property;
-  cars?: Car[];
-  building: string;
-  apartment: string;
-  carPlates?: string;
-}
+import { Visitor } from "../types/Interfaces";
 
 export const fetchVisitors = async (propertyId: number): Promise<Visitor[]> => {
-  const URL_BASE = "http://localhost:8080/api/visitors";
+  const URL_BASE = HOST_API + "/visitors";
 
   try {
     const url =

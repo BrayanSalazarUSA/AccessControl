@@ -2,23 +2,22 @@ import React, { useEffect, useState } from "react";
 import { BsBuildings } from "react-icons/bs";
 import { ImProfile } from "react-icons/im";
 import { MdKeyboardArrowDown, MdOutlineCancel } from "react-icons/md";
-import { TextField, IconButton, Paper } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import TuneIcon from "@mui/icons-material/Tune";
+import {IconButton} from "@mui/material";
+
 import { useStateContext } from "../context/ContextProvider";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IoIosSettings } from "react-icons/io";
 import UserProfile from "./UserProfile";
 import PropertiesNav from "./PropertiesNav";
 import { useFetchProperties } from "../Hooks/useProperties";
+import { SearchBarPrincipal } from "./SearchBarPrincipal";
 
-type NavButtonProps = {
+/* type NavButtonProps = {
   title: string;
   customFunc: () => void;
   icon: JSX.Element;
   color: string;
-};
+}; */
 
 const initialState = {
   chat: false,
@@ -27,7 +26,7 @@ const initialState = {
   notification: false,
 };
 
-const NavButton: React.FC<NavButtonProps> = ({
+/* const NavButton: React.FC<NavButtonProps> = ({
   title,
   customFunc,
   icon,
@@ -43,54 +42,8 @@ const NavButton: React.FC<NavButtonProps> = ({
     {icon}
   </button>
 );
+ */
 
-const DriveSearchBar: React.FC = () => {
-  return (
-    <Paper
-      elevation={3}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        p: "7px 8px",
-        borderRadius: "24px",
-        width: "100%",
-        maxWidth: "450px",
-        backgroundColor: "transparent",
-      }}
-    >
-      {/* Icono de búsqueda */}
-      <IconButton>
-        <SearchIcon sx={{ color: "white" }} />
-      </IconButton>
-
-      {/* Barra de texto */}
-      <TextField
-        variant="standard"
-        placeholder="Search visitor"
-        InputProps={{
-          disableUnderline: true,
-        }}
-        sx={{
-          ml: 1,
-          flex: 1,
-          input: {
-            padding: "8px",
-            fontSize: "16px",
-            color: "white",
-          },
-        }}
-      />
-
-      {/* Iconos de acciones adicionales */}
-      <IconButton>
-        <FilterListIcon sx={{ color: "white" }} />
-      </IconButton>
-      <IconButton>
-        <TuneIcon sx={{ color: "white" }} />
-      </IconButton>
-    </Paper>
-  );
-};
 
 export const NavbarDashboard: React.FC = () => {
   const [, setActiveMenu] = useState<boolean>(true);
@@ -100,8 +53,7 @@ export const NavbarDashboard: React.FC = () => {
 
   // Datos de prueba
   const userProfile = { name: "John Doe", role: "Admin" };
-  const propertySelected = { name: "Select a Property" };
- const { propertySelectedContext } = useStateContext()
+  const { propertySelectedContext } = useStateContext()
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -118,7 +70,7 @@ export const NavbarDashboard: React.FC = () => {
   }, [screenSize]);
   const { properties } = useFetchProperties();
 
-  const handleClick = (clicked) => {
+  const handleClick = (clicked:string) => {
     setIsClicked({ ...initialState, [clicked]: true });
   };
 
@@ -142,7 +94,7 @@ export const NavbarDashboard: React.FC = () => {
         {leftCollapsed ? <MenuIcon /> : <MdOutlineCancel />}
       </IconButton>
 
-      <DriveSearchBar />
+      <SearchBarPrincipal propertySelectedContext={propertySelectedContext} properties={properties}/>
 
       
 

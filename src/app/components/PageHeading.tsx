@@ -37,7 +37,7 @@ const JobHeader: React.FC<JobHeaderProps> = ({
               aria-hidden="true"
               className="mr-1.5 size-5 shrink-0 text-gray-400"
             />
-            Closing on {closingDate}
+            Dates {closingDate}
           </div>
         </div>
       </div>

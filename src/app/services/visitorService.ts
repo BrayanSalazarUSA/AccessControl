@@ -1,12 +1,12 @@
 // services/visitorService.ts
-import axios from 'axios';
-import { Visitor } from './accessService';
+const HOST_API = import.meta.env.VITE_HOST_API;
 
-const URL_BASE = 'http://localhost:8080/api/visitors';
+import axios from 'axios';
+import { Visitor } from '../types/Interfaces';
 
 export const addVisitor = async (visitor: Visitor): Promise<Visitor> => {
   try {
-    const response = await axios.put(`${URL_BASE}/asign-visitor`, visitor);
+    const response = await axios.put(`${HOST_API}/visitor/asign-visitor`, visitor);
     return response.data;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {

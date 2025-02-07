@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 import { IoMdContacts } from "react-icons/io";
 import { BsBuildings } from "react-icons/bs";
-import { CarRepairTwoTone, MapOutlined } from "@mui/icons-material";
+import { CarRepairTwoTone, DeviceHub, MapOutlined, Router } from "@mui/icons-material";
 
 const links = [
   {
@@ -30,6 +30,11 @@ const links = [
         name: "Properties",
         icon: <BsBuildings />,
         url: "Properties",
+      },
+      {
+        name: "Devices",
+        icon: <Router />,
+        url:"Devices"
       },
       {
         name: "Users",

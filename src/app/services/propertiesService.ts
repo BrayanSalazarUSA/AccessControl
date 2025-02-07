@@ -1,16 +1,10 @@
-// Tipado de la propiedad
-export interface Property {
-  id: number;
-  name: string;
-  address: string;
-  state: string;
-  zipCode: string;
-}
+const HOST_API = import.meta.env.VITE_HOST_API;
+import { Property } from "../types/Interfaces";
 
 // Función para obtener las propiedades
 export const fetchProperties = async (): Promise<Property[]> => {
   try {
-    const response = await fetch('http://localhost:8080/api/properties');
+    const response = await fetch(HOST_API+'/properties');
     if (!response.ok) {
       throw new Error('Error al obtener las propiedades');
     }
@@ -24,7 +18,7 @@ export const fetchProperties = async (): Promise<Property[]> => {
 // Función para crear una nueva propiedad
 export const createProperty = async (propertyData: Property): Promise<Property> => {
   try {
-    const response = await fetch('http://localhost:8080/api/properties', {
+    const response = await fetch(HOST_API+'/properties', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +41,7 @@ export const createProperty = async (propertyData: Property): Promise<Property> 
 
 export const deleteProperty = async (propertyId: number): Promise<void> => {
   try {
-    const response = await fetch(`http://localhost:8080/api/properties/deleteById/${propertyId}`, {
+    const response = await fetch(`${HOST_API}/properties/deleteById/${propertyId}`, {
       method: 'DELETE',
     });
 

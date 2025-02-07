@@ -15,6 +15,7 @@ import { AppDashboard } from "./app/page/AppDashboard";
 import UsersPage from "./app/page/UsersPage";
 import PropertiesPage from "./app/page/PropertiesPage";
 import MapPage from "./app/page/MapPage";
+import { DevicesPage } from "./app/page/DevicesPage";
 
 
 function AppHome() {
@@ -40,6 +41,7 @@ function AppHome() {
           <Route path="/dashboard/control" element={<AppDashboard />} />
           <Route path="/dashboard/Users" element={<UsersPage />} />
           <Route path="/dashboard/Properties" element={<PropertiesPage/>} />
+          <Route path="/dashboard/Devices" element={<DevicesPage/>} />
           <Route path="/dashboard/Map" element={<MapPage/>} />
         </Route>
       </Routes>

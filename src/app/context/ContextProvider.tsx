@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { Property } from "../services/propertiesService";
+import { Property } from "../types/Interfaces";
 
 // Define los tipos de los valores iniciales
 interface InitialStateType {

@@ -1,7 +1,7 @@
 // hooks/usePostVisitor.ts
 import { useState } from 'react';
 import { addVisitor } from '../services/visitorService';
-import { Visitor } from '../services/accessService';
+import { Visitor } from '../types/Interfaces';
 
 const usePostVisitor = () => {
   const [loading, setLoading] = useState(false);

@@ -20,10 +20,11 @@ import { MdDeleteSweep } from "react-icons/md";
 import PropertyForm from "../components/forms/PropertyForm";
 import SuccessModal from "../components/modals/SuccessModal";
 import { BsBuildings } from "react-icons/bs";
-import { deleteProperty, Property } from "../services/propertiesService";
+import { deleteProperty } from "../services/propertiesService";
 import ErrorModal from "../components/modals/ErrorModal";
 import { DeleteOutline, EditNote, MapRounded } from "@mui/icons-material";
 import JobHeader from "../components/PageHeading";
+import { Property } from "../types/Interfaces";
 
 const PropertiesPage = () => {
   const [refetch, setRefetch] = useState<boolean>(false); // Estado para forzar la actualización de propiedades
@@ -188,13 +189,13 @@ const PropertiesPage = () => {
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>Imagen</TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Dirección</TableCell>
-              <TableCell>Estado</TableCell>
-              <TableCell>Código Postal</TableCell>
+              <TableCell>Image</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Address</TableCell>
+              <TableCell>State</TableCell>
+              <TableCell>Zip Code</TableCell>
               <TableCell>Map</TableCell>
-              <TableCell>Acciones</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
